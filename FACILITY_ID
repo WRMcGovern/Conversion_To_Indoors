@@ -1,0 +1,8 @@
+//Extract Prefix
+var Prefix = left($feature.FACILITYID,4)
+//Extract Sequence
+var Sequence = mid($feature.FACILITYID,4)
+//Converts the largest number in the sequence to a number.
+var Max_Sequence = Max(Number(Sequence))
+//Concatenates the prefix with the next number in the sequence.
+return Prefix+(Max_Sequence+1)
