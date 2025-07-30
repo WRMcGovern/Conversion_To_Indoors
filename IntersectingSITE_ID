@@ -1,0 +1,16 @@
+//Use this expression to automate the creation of NAME_LONG values using attribute rules in ArcGIS Pro.
+//The following comments are for describing how to set up the attribute rules.
+//Set description to "TThis attribute rule updates the SITE_ID for a Building when it intersects or does not intersect a Site."
+//Set Subtype to <ALL>
+//Set Field to SITE_ID
+//Set Editable to Yes.
+//The below comments until the last comment are for use in the expression itself.
+// Assigns the feature class the expression is assigned to with the variable Building.
+var Building = $feature
+// Assigns the feature class with the alias prcfSiteto the variable building in the feature dataset or map.
+var Site = FeatureSetByName($datastore, "prcfSite")
+// Checks if a Site intersects a Building.
+var intersectingSites = Intersects(Site, Building)
+// Selects the first Site feature that intersects the Building.
+var site = First(intersectingSites)
+//Set Triggers to Insert and Update.
