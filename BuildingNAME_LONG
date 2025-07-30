@@ -1,0 +1,10 @@
+//Use this expression to automate the creation of NAME_LONG values using attribute rules in ArcGIS Pro.
+//The following comments are for describing how to set up the attribute rules.
+//Set description to "This attribute rule updates the NAME_LONG for a feature class by concatenating and formatting the FACILITY_ID and NAME."
+//Set Subtype to <ALL>
+//Set Field to NAME_LONG
+//Set Editable to Yes.
+var Name_Upper = Upper($feature.NAME)
+var Name_No_Space = Replace(Name_Upper,' ','')
+$feature.FACILITY_ID + "_" + Name_No_Space
+//Set Triggers to Insert.
