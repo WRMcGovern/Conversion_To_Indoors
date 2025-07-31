@@ -1,3 +1,10 @@
+//Use this expression to automate the creation of FACILITY_ID values using attribute rules in ArcGIS Pro.
+//The following comments are for describing how to set up the attribute rules.
+//Set description to "This attribute rule creates the FACILITY_ID for a record. It takes the existing prefix in the FACILITY_ID field and then adds a number for each following sequence."
+//Set Subtype to <ALL>
+//Set Field to FACILITY_ID
+//Set Editable to Yes.
+//The below comments until the last comment are for use in the expression itself.
 //Extract Prefix
 var Prefix = left($feature.FACILITYID,4)
 //Extract Sequence
@@ -6,3 +13,4 @@ var Sequence = mid($feature.FACILITYID,4)
 var Max_Sequence = Max(Number(Sequence))
 //Concatenates the prefix with the next number in the sequence.
 return Prefix+(Max_Sequence+1)
+//Set Triggers to Inset.
