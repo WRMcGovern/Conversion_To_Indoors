@@ -1,0 +1,11 @@
+// The Floor level domain values as a variable.
+var Floor = DomainName($feature, 'NAME_SHORT');
+// Dictionary of non numerical domain values.
+var Keywords = ["Exterior", "Basement", "SubBasemnt", "Roof", "Other", "Unknown"];
+
+// If the value is numerical, add the prefix "Floor" else return just the FLOOR value.
+if (Includes(Keywords, Floor)) {
+    return Floor;
+} else {
+    return "Floor " + Floor;
+}
