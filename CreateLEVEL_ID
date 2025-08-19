@@ -1,17 +1,10 @@
-// Assigns the feature class the expression is assigned to with the variable feature.
-var feature = $feature;
-
-// Assigns the feature class with the name prcfBuilding to the variable building in the feature dataset or map.
-var buildings = FeatureSetByName($datastore, "prcfBuilding");
-
-// Checks if a feature intersects a Building.
-var intersecting = Intersects(buildings, feature);
-
-// Selects the first Building feature that intersects the Feature.
-var intersectingBuilding = First(intersecting);
-
-// Assigns the Facility_ID value from the Building feature class field to the variable  if the Buidling intersects the Level. If the Building does not intersect a Level, the expression sets the FACILITY_ID value to be null.
-var intersectingBuildingfacilityID = IIf(!IsEmpty(intersectingBuilding), intersectingBuilding.FACILITY_ID, null);
-
-//Concatenate the Building Facility ID and the Floor Level.
-intersectingBuildingfacilityID + "_F"+ $feature.FLOOR[0]
+//Use this expression to automate the creation of LEVEL_ID values using attribute rules in ArcGIS Pro.
+//The following comments are for describing how to set up the attribute rules.
+//Set description to "This attribute rule updates the LEVEL_ID for feature classes based on the items Facility ID and Floor Level."
+//Set Subtype to <ALL>
+//Set Field to LEVEL_ID
+//Set Editable to Yes.
+//The below comments until the last comment are for use in the expression itself.
+//Concatenate the Facility ID and the Floor Level.
+$feature.FACILITY_ID+ "_F"+$feature.NAME_SHORT[0]
+//Set Triggers to Insert and Update.
