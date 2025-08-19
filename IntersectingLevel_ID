@@ -1,1 +1,18 @@
+// Assigns the feature class the expression is assigned to with the variable feature.
+var feature = $feature;
+
+// Assigns the feature class with the name prcfBuilding to the variable building in the feature dataset or map.
+var buildings = FeatureSetByName($datastore, "prcfBuilding");
+
+// Checks if a feature intersects a Building.
+var intersecting = Intersects(buildings, feature);
+
+// Selects the first Building feature that intersects the Feature.
+var intersectingBuilding = First(intersecting);
+
+// Assigns the Facility_ID value from the Building feature class field to the variable  if the Buidling intersects the Level. If the Building does not intersect a Level, the expression sets the FACILITY_ID value to be null.
+var intersectingBuildingfacilityID = IIf(!IsEmpty(intersectingBuilding), intersectingBuilding.FACILITY_ID, null);
+
+//Concatenate the Building Facility ID and the Floor Level.
+intersectingBuildingfacilityID + "_F"+ $feature.FLOOR[0]
 
