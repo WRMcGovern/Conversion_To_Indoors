@@ -6,5 +6,5 @@
 //Set Editable to Yes.
 //The below comments until the last comment are for use in the expression itself.
 //Concatenate the Facility ID and the Floor Level.
-$feature.FACILITY_ID+ "_F"+$feature.NAME_SHORT[0]
+$feature.FACILITY_ID+ "_L"+$feature.NAME_SHORT[0]
 //Set Triggers to Insert and Update.
