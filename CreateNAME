@@ -1,3 +1,7 @@
+// Feature Class: prcfFloor
+// Field: NAME
+// Triggers: Insert and Update.
+
 // The Floor level domain values as a variable.
 var Floor = DomainName($feature, 'NAME_SHORT');
 // Dictionary of non numerical domain values.
