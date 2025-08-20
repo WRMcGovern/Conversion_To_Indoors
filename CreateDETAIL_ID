@@ -1,0 +1,24 @@
+// Feature Class: prcfFloorPlan
+// Field: DETAIL_ID
+// Triggers: Insert
+
+// Set the feature class prefix.
+
+var Prefix = "PKFP"
+
+// Get the feature set
+var FS = $FeatureSet
+
+// Create an array to store numbers
+var Numbers = [];
+
+// Iterate through the FeatureSet. Set the field for which you iterate through below.
+for (var f in fs) {
+    var n = Number(Mid(f.DETAIL_ID, 4));
+    Push(Numbers, n);
+}
+
+// Get the maximum number
+var MaxNumber = IIf(Count(Numbers) > 0, Max(Numbers), 0);
+
+return Prefix+Number(MaxNumber+1)
