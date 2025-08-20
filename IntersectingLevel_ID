@@ -1,3 +1,7 @@
+// Feature Class: prcfLevel
+// Field: LEVIL_ID
+// Triggers: Insert and Update.
+
 // Assigns the feature class the expression is assigned to with the variable feature.
 var feature = $feature;
 
