@@ -1,10 +1,5 @@
-//Use this expression to automate the creation of LEVEL_ID values using attribute rules in ArcGIS Pro.
-//The following comments are for describing how to set up the attribute rules.
-//Set description to "This attribute rule updates the LEVEL_ID for feature classes based on the items Facility ID and Floor Level."
-//Set Subtype to <ALL>
-//Set Field to LEVEL_ID
-//Set Editable to Yes.
-//The below comments until the last comment are for use in the expression itself.
-//Concatenate the Facility ID and the Floor Level.
-$feature.FACILITY_ID+ "_L"+$feature.NAME_SHORT[0]
-//Set Triggers to Insert and Update.
+// Feature Class: Multiple
+// Field: LEVEL_ID
+// Triggers: Insert
+
+$feature.BLDGFACID+ "_F"+$feature.FLOOR[0] 
