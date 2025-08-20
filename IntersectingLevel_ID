@@ -18,5 +18,4 @@ var intersectingBuilding = First(intersecting);
 var intersectingBuildingfacilityID = IIf(!IsEmpty(intersectingBuilding), intersectingBuilding.FACILITY_ID, null);
 
 //Concatenate the Building Facility ID and the Floor Level.
-intersectingBuildingfacilityID + "_L"+ $feature.FLOOR[0]
-
+intersectingBuildingfacilityID + "_L"+ $feature.NAME_SHORT[0]
