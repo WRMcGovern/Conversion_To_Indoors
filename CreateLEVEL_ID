@@ -1,5 +1,5 @@
 // Feature Class: Multiple
 // Field: LEVEL_ID
-// Triggers: Insert
+// Triggers: Insert and Update
 
 $feature.BLDGFACID+ "_F"+$feature.FLOOR[0] 
