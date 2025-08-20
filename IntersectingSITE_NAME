@@ -1,0 +1,18 @@
+// Feature Class: Multiple.
+// Field: SITE_NAME
+// Triggers: Insert and Update
+
+// Assigns the feature class the expression is assigned to with the variable Level.
+var Feature = $feature
+// Assigns the feature class with the name prcfBuilding to the variable building in the feature dataset or map.
+var Building = FeatureSetByName($datastore, "prcfSite")
+// Checks if a Level intersects a Site.
+var intersectingFeature = Intersects(Building, Feature)
+// Selects the first Building feature that intersects the Feature.
+var Site = First(IntersectingFeature)
+// Assigns the SITE_NAME value from the Building feature class to the current field.
+if (!IsEmpty(Site)) {
+    return Site.SITE_NAME
+} else {
+    return null
+}
