@@ -1,0 +1,22 @@
+// Feature Class: prcfLevel
+// Field: VERTICAL_ORDER
+// Triggers: Insert and Update
+
+// Check for if the input includes text.
+var Text = {
+    "Roof": 10,
+    "Exterior": -1,
+    "Basement": -2,
+    "Sub-Basement": -3
+};
+
+// Check if the input includes the values 1–9.
+var Integer = ["1","2","3","4","5","6","7","8","9"];
+
+if (Includes(Integer, $feature.NAME_SHORT)) {
+    return Number($feature.NAME_SHORT);
+} else if (HasKey(Text, $feature.NAME_SHORT)) {
+    return Text[$feature.NAME_SHORT];
+} else {
+    return NULL
+}
