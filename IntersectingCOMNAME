@@ -10,7 +10,7 @@ var Building = FeatureSetByName($datastore, "prcfBuilding")
 var intersectingFeature = Intersects(Building, Feature)
 // Selects the first Building feature that intersects the Feature.
 var Building = First(IntersectingFeature)
-// Assigns the FACILITY_ID value from the Building feature class to the current field.
+// Assigns the COMNAME value from the Building feature class to the current field.
 if (!IsEmpty(Building)) {
     return Building.COMNAME
 } else {
