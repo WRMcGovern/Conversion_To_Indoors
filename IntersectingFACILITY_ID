@@ -1,24 +1,18 @@
-//Use this expression to find the FACILITY_ID values using attribute rules in ArcGIS Pro.
-//The following comments are for describing how to set up the attribute rules.
-//Set description to "This attribute rule updates the SITE_ID for a Building when it intersects or does not intersect a Site."
-//Set Subtype to <ALL>
-//Set Field to SITE_ID
-//Set Editable to Yes.
-//The below comments until the last comment are for use in the expression itself.
-// Assigns the feature class the expression is assigned to with the variable feature.
-var feature = $feature;
+// Feature Class: Multiple.
+// Field: BLDGFACID and FACILITY_ID
+// Triggers: Insert and Update
 
+// Assigns the feature class the expression is assigned to with the variable Level.
+var Feature = $feature
 // Assigns the feature class with the name prcfBuilding to the variable building in the feature dataset or map.
-var buildings = FeatureSetByName($datastore, "prcfBuilding");
-
-// Checks if a feature intersects a Building.
-var intersecting = Intersects(buildings, feature);
-
+var Building = FeatureSetByName($datastore, "prcfBuilding")
+// Checks if a Level intersects a Building.
+var intersectingFeature = Intersects(Building, Feature)
 // Selects the first Building feature that intersects the Feature.
-var intersectingBuilding = First(intersecting);
-
-// Assigns the Facility_ID value from the Building feature class field to the variable  if the Buidling intersects the Level. If the Building does not intersect a Level, the expression sets the FACILITY_ID value to be null.
-var intersectingBuildingfacilityID = IIf(!IsEmpty(intersectingBuilding), intersectingBuilding.FACILITY_ID, null);
-
-//Concatenate the Building Facility ID and the Floor Level.
-return intersectingBuildingfacilityID + "_F"+ $feature.FLOOR[0]
+var Building = First(IntersectingFeature)
+// Assigns the FACILITY_ID value from the Building feature class to the current field.
+if (!IsEmpty(Building)) {
+    return Building.FACILITY_ID
+} else {
+    return null
+}
