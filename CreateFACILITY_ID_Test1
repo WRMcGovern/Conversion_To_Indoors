@@ -1,16 +1,14 @@
 //Set the feature class name and field.
 
-var FC = "prcfRoom"
-var Field = "UNIT_ID"
 var Prefix = "PKRM"
 
 // Get the feature set
-var FS = FeatureSetByName($datastore, FC);
+var FS = $FeatureSet
 
 // Create an array to store numbers
 var Numbers = [];
 
-// Iterate through the FeatureSet. Enter desired field below.
+// Iterate through the FeatureSet. Set the field for which you iterate through below.
 for (var f in fs) {
     var n = Number(Mid(f.UNIT_ID, 4));
     Push(Numbers, n);
