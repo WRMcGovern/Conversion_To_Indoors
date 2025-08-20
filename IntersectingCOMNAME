@@ -12,7 +12,7 @@ var intersectingFeature = Intersects(Building, Feature)
 var Building = First(IntersectingFeature)
 // Assigns the COMNAME value from the Building feature class to the current field.
 if (!IsEmpty(Building)) {
-    return Building.COMNAME
+    return Building.NAME
 } else {
     return null
 }
