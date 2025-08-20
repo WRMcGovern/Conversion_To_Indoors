@@ -1,0 +1,18 @@
+// Feature Class: prcfBuilding
+// Field: SITE_ID
+// Trigger: Insert and Update
+// Assigns the feature class with the variable Building.
+var Building = $feature
+// Assigns the feature class with the name prcfSite to the variable Site.
+var Site = FeatureSetByName($datastore, "prcfSite")
+// Checks if a Site intersects a Building.
+var intersectingSites = Intersects(Site, Building)
+// Selects the first Site feature that intersects the Building.
+var site = First(intersectingSites)
+// Assigns the SITE_ID value from the Site feature class to the current field.
+if (!IsEmpty(site)) {
+    return site.Site_ID
+} else {
+    return null
+}
+
