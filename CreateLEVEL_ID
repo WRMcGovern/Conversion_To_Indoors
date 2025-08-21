@@ -2,4 +2,4 @@
 // Field: LEVEL_ID
 // Triggers: Insert and Update
 
-$feature.BLDGFACID+ "_F"+$feature.FLOOR[0] 
+$feature.BLDGFACID+ "_L"+$feature.FLOOR[0] 
